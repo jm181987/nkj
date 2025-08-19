@@ -5,13 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NKJ Streams - Soluciones para Streamers</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #00e6e6;
+      --dark-bg: #0a0f1c;
+      --card-bg: #111727;
+      --nav-bg: #1a2238;
+      --text-color: #e4e6eb;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background-color: #0a0f1c;
-      color: #e4e6eb;
+      background-color: var(--dark-bg);
+      color: var(--text-color);
+      line-height: 1.6;
     }
+    
     header {
       background: #000;
       padding: 0;
@@ -19,12 +34,15 @@
       position: relative;
       overflow: hidden;
     }
+    
     .hero-container {
       position: relative;
       width: 100%;
-      height: 200vh;
+      height: 100vh; /* Reducido de 200vh a 100vh */
+      max-height: 800px; /* Altura máxima para pantallas grandes */
       overflow: hidden;
     }
+    
     .hero-container img {
       width: 100%;
       height: 100%;
@@ -34,128 +52,283 @@
       left: 0;
       transition: opacity 2.3s ease-out;
     }
+    
+    /* Navegación responsiva */
     nav {
       display: flex;
       justify-content: center;
-      background-color: #1a2238;
+      background-color: var(--nav-bg);
       padding: 1rem 0;
       animation: slideIn 1s ease-in-out;
+      position: relative;
     }
-    nav a {
-      color: #00e6e6;
+    
+    .nav-container {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+    
+    .logo {
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links a {
+      color: var(--primary-color);
       text-decoration: none;
       margin: 0 1rem;
       font-weight: bold;
+      transition: color 0.3s;
     }
+    
+    .nav-links a:hover {
+      color: #fff;
+    }
+    
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: var(--primary-color);
+      margin-bottom: 4px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    
     section {
-      padding: 4rem 2rem;
+      padding: 4rem 1rem;
       max-width: 1200px;
       margin: auto;
       animation: fadeInUp 1.5s ease-in-out;
     }
+    
+    .section-title {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
     }
+    
     .feature {
-      background-color: #111727;
+      background-color: var(--card-bg);
       border-radius: 10px;
       padding: 2rem;
       text-align: center;
       box-shadow: 0 0 15px rgba(0, 230, 230, 0.1);
       transition: transform 0.3s;
     }
+    
     .feature:hover {
       transform: scale(1.05);
     }
+    
     .feature img {
       max-width: 100%;
+      height: auto;
       border-radius: 8px;
       margin-bottom: 1rem;
     }
+    
     .feature h3 {
-      color: #00e6e6;
+      color: var(--primary-color);
+      margin-top: 0;
     }
+    
     footer {
       text-align: center;
       padding: 2rem;
       background-color: #10141f;
       color: #888;
     }
+    
+    /* Botón de WhatsApp */
+    .whatsapp-float {
+      position: fixed !important;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      animation: fadeInUp 0.5s ease-in-out both;
+    }
+    
+    .whatsapp-button {
+      background-color: #25D366;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s;
+    }
+    
+    .whatsapp-button:hover {
+      background-color: #128C7E;
+    }
+    
+    .whatsapp-button svg {
+      fill: #fff;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    
+    /* Animaciones */
     @keyframes slideIn {
       from {transform: translateY(-20px); opacity: 0;}
       to {transform: translateY(0); opacity: 1;}
     }
-    @keyframes fadeInUp {
-      from {transform: translateY(30px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
-    }
-
-
-.whatsapp-float {
-  position: fixed !important;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999;
-  animation: fadeInUp 0.5s ease-in-out both;
-}
-
-.whatsapp-button {
-  background-color: #25D366;
-  color: #fff;
-  font-size: 16px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.whatsapp-button svg {
-  fill: #fff;
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-
     
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    
+    /* Media Queries para Responsividad */
+    @media screen and (max-width: 768px) {
+      .hero-container {
+        height: 50vh; /* Más apropiado para móviles */
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background-color: var(--nav-bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 2rem;
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-links a {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+      }
+      
+      .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      
+      section {
+        padding: 2rem 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .hero-container {
+        height: 40vh;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .feature {
+        padding: 1.5rem;
+      }
+      
+      .whatsapp-button {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+      
+      .whatsapp-button svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="hero-container">
-      <img id="heroImage" src="Soluciones con IA.gif" alt="Streamer principal">
+      <img id="heroImage" src="Soluciones con IA.gif" alt="Soluciones con IA para Streamers">
     </div>
   </header>
 
   <nav>
-    <a href="#servicios">Servicios</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#contacto">Contacto</a>
-    <a href="#Bots con IA para Whatsapp">Bots con IA</a>
-     <a href="#Paginas web">Paginas web</a>
-   
-
+    <div class="nav-container">
+      <div class="logo">NKJ Streams</div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#bots">Bots con IA</a></li>
+        <li><a href="#paginas-web">Páginas web</a></li>
+      </ul>
+    </div>
   </nav>
 
   <section id="servicios">
-    <h2 style="text-align:center; color:#00e6e6;">Nuestros Servicios</h2>
+    <h2 class="section-title">Nuestros Servicios</h2>
     <div class="features">
       <div class="feature">
         <img src="https://static.vecteezy.com/system/resources/thumbnails/009/346/735/small_2x/live-stream-icon-with-play-symbol-online-stream-sign-flat-simple-design-transparent-background-png.png" alt="Configuración de Stream">
@@ -175,53 +348,39 @@
     </div>
   </section>
 
-
-
-<section id="Bots con IA para Whatsapp">
-    <h2 style="text-align:center; color:#00e6e6;">Bots para Whatsapp</h2>
+  <section id="bots">
+    <h2 class="section-title">Bots para Whatsapp</h2>
     <div class="features">
       <div class="feature">
-        <img src="bot.png" alt="Configuración de Stream">
+        <img src="bot.png" alt="Configuración de Bots con IA">
         <h3>Configuración de Bots con IA</h3>
         <p>Configuración profesional de tu asistente de ventas/agenda/soporte con IA para Whatsapp. Conectamos tu cuenta de Whatsapp con un bot inteligente que puede responder preguntas frecuentes, agendar citas y más.</p>
-      </p>
-         <p>Tu unica tarea es decirnos que necesitas y nosotros lo hacemos realidad.</p>
-
-        </p>
+        <p>Tu única tarea es decirnos que necesitas y nosotros lo hacemos realidad.</p>
       </div>
-      
-      
     </div>
   </section>
-  <section id="Paginas web">
-    <h2 style="text-align:center; color:#00e6e6;">Paginas web</h2>
+  
+  <section id="paginas-web">
+    <h2 class="section-title">Páginas web</h2>
     <div class="features">
       <div class="feature">
-        <img src="web.png" alt="pagina web">
+        <img src="web.png" alt="Página web">
         <h3>Creamos tu web a tu medida</h3>
-        <p>Configuración profesional de tu sitio web</p>
-         <p>Tu unica tarea es decirnos que necesitas</p>
-
-        </p>
+        <p>Configuración profesional de tu sitio web.</p>
+        <p>Tu única tarea es decirnos que necesitas.</p>
       </div>
-      
-      
     </div>
   </section>
 
-
-
-
-
   <section id="nosotros">
-    <h2 style="text-align:center; color:#00e6e6;">Quiénes Somos</h2>
+    <h2 class="section-title">Quiénes Somos</h2>
     <p style="text-align:center; max-width:800px; margin:auto;">
       En NKJ Streams nos especializamos en soluciones inteligentes y personalizadas para streamers. Combinamos tecnología, diseño y estrategia para elevar la experiencia de las transmisiones en vivo.
     </p>
   </section>
 
   <section id="contacto">
-    <h2 style="text-align:center; color:#00e6e6;">Contacto</h2>
+    <h2 class="section-title">Contacto</h2>
     <p style="text-align:center;">Escribinos a <strong>jorgitom18@gmail.com</strong> o seguinos en redes para conocer nuestros planes personalizados.</p>
   </section>
 
@@ -229,19 +388,55 @@
     <p>&copy; 2025 NKJ Streams. Todos los derechos reservados.</p>
   </footer>
   
-<a href="https://api.whatsapp.com/send?phone=59894920949&text=Hola%20quiero%20contactarte" target="_blank" class="whatsapp-float">
-  <button class="whatsapp-button">
-    <svg viewBox="0 0 64 64" width="20" height="20">
-      <path d="M6.9,48.4c-0.4,1.5-0.8,3.3-1.3,5.2c-0.7,2.9,1.9,5.6,4.8,4.8l5.1-1.3c1.7-0.4,3.5-0.2,5.1,0.5 c4.7,2.1,10,3,15.6,2.1c12.3-1.9,22-11.9,23.5-24.2C62,17.3,46.7,2,28.5,4.2C16.2,5.7,6.2,15.5,4.3,27.8c-0.8,5.6,0,10.9,2.1,15.6 C7.1,44.9,7.3,46.7,6.9,48.4z M21.3,19.8c0.6-0.5,1.4-0.9,1.8-0.9s2.3-0.2,2.9,1.2c0.6,1.4,2,4.7,2.1,5.1c0.2,0.3,0.3,0.7,0.1,1.2 c-0.2,0.5-0.3,0.7-0.7,1.1c-0.3,0.4-0.7,0.9-1,1.2c-0.3,0.3-0.7,0.7-0.3,1.4c0.4,0.7,1.8,2.9,3.8,4.7c2.6,2.3,4.9,3,5.5,3.4 c0.7,0.3,1.1,0.3,1.5-0.2c0.4-0.5,1.7-2,2.2-2.7c0.5-0.7,0.9-0.6,1.6-0.3c0.6,0.2,4,1.9,4.7,2.2c0.7,0.3,1.1,0.5,1.3,0.8 c0.2,0.3,0.2,1.7-0.4,3.2c-0.6,1.6-2.1,3.1-3.2,3.5c-1.3,0.5-2.8,0.7-9.3-1.9c-7-2.8-11.8-9.8-12.1-10.3c-0.3-0.5-2.8-3.7-2.8-7.1 C18.9,22.1,20.7,20.4,21.3,19.8z"></path>
-    </svg>
-    WhatsApp
+  <a href="https://api.whatsapp.com/send?phone=59894920949&text=Hola%20quiero%20contactarte" target="_blank" class="whatsapp-float">
+    <button class="whatsapp-button">
+      <svg viewBox="0 0 64 64" width="20" height="20">
+        <path d="M6.9,48.4c-0.4,1.5-0.8,3.3-1.3,5.2c-0.7,2.9,1.9,5.6,4.8,4.8l5.1-1.3c1.7-0.4,3.5-0.2,5.1,0.5 c4.7,2.1,10,3,15.6,2.1c12.3-1.9,22-11.9,23.5-24.2C62,17.3,46.7,2,28.5,4.2C16.2,5.7,6.2,15.5,4.3,27.8c-0.8,5.6,0,10.9,2.1,15.6 C7.1,44.9,7.3,46.7,6.9,48.4z M21.3,19.8c0.6-0.5,1.4-0.9,1.8-0.9s2.3-0.2,2.9,1.2c0.6,1.4,2,4.7,2.1,5.1c0.2,0.3,0.3,0.7,0.1,1.2 c-0.2,0.5-0.3,0.7-0.7,1.1c-0.3,0.4-0.7,0.9-1,1.2c-0.3,0.3-0.7,0.7-0.3,1.4c0.4,0.7,1.8,2.9,3.8,4.7c2.6,2.3,4.9,3,5.5,3.4 c0.7,0.3,1.1,0.3,1.5-0.2c0.4-0.5,1.7-2,2.2-2.7c0.5-0.7,0.9-0.6,1.6-0.3c0.6,0.2,4,1.9,4.7,2.2c0.7,0.3,1.1,0.5,1.3,0.8 c0.2,0.3,0.2,1.7-0.4,3.2c-0.6,1.6-2.1,3.1-3.2,3.5c-1.3,0.5-2.8,0.7-9.3-1.9c-7-2.8-11.8-9.8-12.1-10.3c-0.3-0.5-2.8-3.7-2.8-7.1 C18.9,22.1,20.7,20.4,21.3,19.8z"></path>
+      </svg>
+      WhatsApp
+    </button>
+  </a>
+
+  <script>
+    // Menú móvil
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const closeMenu = document.getElementById('closeMenu');
     
-  </button>
-</a>
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenu.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Smooth scrolling para enlaces de anclaje
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
-
-
-
-
